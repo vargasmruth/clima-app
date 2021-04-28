@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/vargasmruth/clima-app#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "colors": "^1.4.0",
     "inquirer": "^8.0.0"
   }

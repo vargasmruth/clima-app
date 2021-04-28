@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 
 class Searches {
 
@@ -8,11 +9,17 @@ class Searches {
     }
 
     async city( place = '') {
-        
+        try {
         // http request
-        console.log(place);
+        const res = await axios.get('https://reqres.in/api/users?page=2');
+        console.log(res.data);
 
-        return []; // return places
+        } catch (error) {
+            return []; // return places            
+        }
+        
+        
+
     }
 
 }
