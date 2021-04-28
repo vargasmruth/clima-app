@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 require('colors');
 
-const preguntas = [
+const questions = [
     {
         type: 'list',
         name: 'opcion',
@@ -32,12 +32,12 @@ const inquirerMenu = async() => {
     console.log('  Seleccione una opción'.white );
     console.log('==========================\n'.green);
 
-    const { opcion } = await inquirer.prompt(preguntas);
+    const { opcion } = await inquirer.prompt(questions);
 
     return opcion;
 }
 
-const pausa = async() => {
+const pause = async() => {
     
     const question = [
         {
@@ -51,7 +51,7 @@ const pausa = async() => {
     await inquirer.prompt(question);
 }
 
-const leerInput = async( message ) => {
+const readInput = async( message ) => {
 
     const question = [
         {
@@ -71,7 +71,7 @@ const leerInput = async( message ) => {
     return desc;
 }
 
-const listadoTareasBorrar = async( tareas = [] ) => {
+const cleanTaskList = async( tareas = [] ) => {
 
     const choices = tareas.map( (tarea, i) => {
 
@@ -88,7 +88,7 @@ const listadoTareasBorrar = async( tareas = [] ) => {
         name: '0.'.green + ' Cancelar'
     });
 
-    const preguntas = [
+    const questions = [
         {
             type: 'list',
             name: 'id',
@@ -97,13 +97,13 @@ const listadoTareasBorrar = async( tareas = [] ) => {
         }
     ]
 
-    const { id } = await inquirer.prompt(preguntas);
+    const { id } = await inquirer.prompt(questions);
     return id;
 }
 
-const confirmar = async(message) => {
+const confirm = async(message) => {
 
-    const question = [
+    const questions = [
         {
             type: 'confirm',
             name: 'ok',
@@ -111,11 +111,11 @@ const confirmar = async(message) => {
         }
     ];
 
-    const { ok } = await inquirer.prompt(question);
+    const { ok } = await inquirer.prompt(questions);
     return ok;
 }   
 
-const mostrarListadoChecklist = async( tareas = [] ) => {
+const showChecklist = async( tareas = [] ) => {
 
     const choices = tareas.map( (tarea, i) => {
 
@@ -128,7 +128,7 @@ const mostrarListadoChecklist = async( tareas = [] ) => {
         }
     });
 
-    const pregunta = [
+    const question = [
         {
             type: 'checkbox',
             name: 'ids',
@@ -145,9 +145,9 @@ const mostrarListadoChecklist = async( tareas = [] ) => {
 
 module.exports = {
     inquirerMenu,
-    pausa,
-    leerInput,
-    listadoTareasBorrar,
-    confirmar,
-    mostrarListadoChecklist
+    pause,
+    readInput,
+    cleanTaskList,
+    confirm,
+    showChecklist
 }

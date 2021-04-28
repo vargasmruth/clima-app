@@ -1,16 +1,40 @@
-const { pausa, inquirerMenu } = require("./helpers/inquirer");
+const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
+const Searches = require("./models/searches");
 
 
 const main = async() => {
+    const searches = new Searches();
     let opt;
 
     do {
-
         opt = await inquirerMenu();
-        console.log({opt});
-        
+        switch (opt) {
+            case 1:
+                // show message
+                const place = await readInput('Lugar: ');
+                console.log(place);
+                // search places
+                // select place
 
-        if( opt !== 0 ) await pausa();
+                // show weather
+
+                // show results
+                console.log('\nInformación de la ciudad\n'.green);
+                console.log('Ciudad:');
+                console.log('Latitud:');
+                console.log('Longitud:');
+                console.log('Temperatura:');
+                console.log('Mínima:');
+                console.log('Máxima:');
+                
+                break;
+        
+            default:
+                break;
+        }
+
+
+        if( opt !== 0 ) await pause();
 
     } while (opt !== 0)
 
