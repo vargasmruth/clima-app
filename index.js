@@ -3,7 +3,6 @@ const axios = require('axios');
 const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
 const Searches = require("./models/searches");
 
-
 const main = async() => {
     const searches = new Searches();
     let opt;
