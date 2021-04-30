@@ -41,7 +41,7 @@ const main = async() => {
                 break;
                 
                 case 2:
-                    searches.history.forEach((place, i) => {
+                    searches.capitalizeHistory.forEach((place, i) => {
                         const idx = `${i+1}.`.green;
                         console.log(`${idx} ${place}`)
                     });
