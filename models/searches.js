@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 
 class Searches {
 
-    history = ['Santa Cruz', 'Cochabamba', 'Beni' ];
+    history = [];
 
     constructor() {
         // read from DB if it exist!
@@ -68,6 +68,25 @@ class Searches {
             console.log(error);
         }
 
+    }
+
+    addHistory(place = '') {
+        
+        if (this.history.includes(place.toLocaleLowerCase())) {
+            return;
+        }
+        
+        this.history.unshift(place.toLocaleLowerCase());
+
+        // Save to db
+    }
+
+    saveDB() {
+
+    }
+
+    readDB() {
+        
     }
 
 }

@@ -20,7 +20,10 @@ const main = async() => {
 
                 // select place
                 const idSelected = await placesList(places);
+                if (idSelected == '0') continue;
                 const placeSelected = places.find(place => place.id == idSelected);
+                // Save to db
+                searches.addHistory(placeSelected.name);
                 
                 // show weather
                 const weather = await searches.weatherPlace(placeSelected.lat, placeSelected.lon);
@@ -34,10 +37,16 @@ const main = async() => {
                 console.log('Clima:', weather.desc.green);
                 console.log('Temperatura:', weather.temp);
                 console.log('Mínima:', weather.min);
-                console.log('Máxima:', weather.max);
-                
+                console.log('Máxima:', weather.max);                
                 break;
-        
+                
+                case 2:
+                    searches.history.forEach((place, i) => {
+                        const idx = `${i+1}.`.green;
+                        console.log(`${idx} ${place}`)
+                    });
+                break;
+
             default:
                 break;
         }
