@@ -1,7 +1,10 @@
 const axios = require('axios');
+require('dotenv').config()
 
 const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
 const Searches = require("./models/searches");
+
+console.log(process.env);
 
 const main = async() => {
     const searches = new Searches();
