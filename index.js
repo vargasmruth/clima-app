@@ -14,24 +14,27 @@ const main = async() => {
             case 1:
                 // show message
                 const term = await readInput('Ciudad: ');
-                const places = await searches.city(term);
                 
                 // search places
+                const places = await searches.city(term);
+
+                // select place
                 const idSelected = await placesList(places);
                 const placeSelected = places.find(place => place.id == idSelected);
                 
-                // select place
-
                 // show weather
+                const weather = await searches.weatherPlace(placeSelected.lat, placeSelected.lon);
 
                 // show results
+                console.clear();
                 console.log('\nInformación de la ciudad\n'.green);
-                console.log('Ciudad:', placeSelected.name);
+                console.log('Ciudad:', placeSelected.name.green);
                 console.log('Latitud:', placeSelected.lat);
-                console.log('Longitud:', placeSelected.lng);
-                console.log('Temperatura:');
-                console.log('Mínima:');
-                console.log('Máxima:');
+                console.log('Longitud:', placeSelected.lon);
+                console.log('Clima:', weather.desc.green);
+                console.log('Temperatura:', weather.temp);
+                console.log('Mínima:', weather.min);
+                console.log('Máxima:', weather.max);
                 
                 break;
         
