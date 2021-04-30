@@ -25,9 +25,13 @@ class Searches {
         })
 
         const res = await instance.get();
-        console.log(res.data);
-
-        return []; // return places   
+        console.log(res.data.features);
+        return res.data.features.map(place => ({
+            id: place.id,
+            name: place.place_name,
+            lng: place.center[0],
+            lat: place.center[1],
+        })); 
 
         } catch (error) {
             return []; // return places            
